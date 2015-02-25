@@ -1,0 +1,5 @@
+Auth.DONOTCOMMIT.cs
+bin
+obj
+packages
+*.userprefs

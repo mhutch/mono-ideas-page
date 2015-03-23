@@ -62,11 +62,11 @@ Microsoft .NET and Mono Integration
 
 Microsoft open sourced large chunks of code this year:
 
-* ReferenceSource: the source code for the class libraries of .NET as it ships on Windows
-* CoreFX: a fresh take on the distribution of the class libraries for a new, slimmer, smaller runtime
-* CoreCLR: their C/C++ based runtime, JIT, GC for running on Mac, Linux and Windows
-* Roslyn: Microsoft's C# and VB compiler as a service
-* CodeContracts: the tools needed to instrument your code
+- ReferenceSource: the source code for the class libraries of .NET as it ships on Windows
+- CoreFX: a fresh take on the distribution of the class libraries for a new, slimmer, smaller runtime
+- CoreCLR: their C/C++ based runtime, JIT, GC for running on Mac, Linux and Windows
+- Roslyn: Microsoft's C# and VB compiler as a service
+- CodeContracts: the tools needed to instrument your code
 
 We are tracking various ideas in the [.NET Integration in Mono](https://trello.com/b/vRPTMfdz/net-framework-integration-into-mono) trello board.
 
@@ -99,19 +99,19 @@ If you have questions or suggestions that you want to make in real-time and talk
 on IRC on the server "irc.gnome.org" in channel "#monosoc", "#monodev" or the "#mono" channel. Various mentors and
 students from past years are usually there and can answer some quick questions about the program and about Mono.
 
-The mailing lists are a very important communication channel, students should use them to get more information and 
+The mailing lists are a very important communication channel, students should use them to get more information and
 feedback about ideas and proposals. Community engagement is essential for a successful summer of code, so get involved!
 
-For any questions you may have about the program itself and to talk to the Mono GSoC admin, you can use 
+For any questions you may have about the program itself and to talk to the Mono GSoC admin, you can use
 [soc@xamarin.com](mailto:soc@xamarin.com).
 
 Mailing Lists
 -------------
 
-[http://lists.ximian.com/mailman/listinfo/mono-devel-list](http://lists.ximian.com/mailman/listinfo/mono-devel-list) 
+[http://lists.ximian.com/mailman/listinfo/mono-devel-list](http://lists.ximian.com/mailman/listinfo/mono-devel-list)
 A mailing list dedicated to discussions about developing Mono itself, such as development of the runtime, class libraries, and related Mono projects.
 
-[http://lists.ximian.com/mailman/listinfo/monodevelop-devel-list](http://lists.ximian.com/mailman/listinfo/monodevelop-devel-list) 
+[http://lists.ximian.com/mailman/listinfo/monodevelop-devel-list](http://lists.ximian.com/mailman/listinfo/monodevelop-devel-list)
 Discussion on the development/implementation of MonoDevelop.
 
 A complete breakdown of all Mono mailing lists is available at [Mailing Lists](/community/help/mailing-lists/).

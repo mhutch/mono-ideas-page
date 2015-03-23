@@ -30,8 +30,8 @@ namespace MonoGSoCIdeasPage
 			var page = new Page ();
 
 			page.Ideas = readyCards.Select (c => new Idea {
-				Area = c.Labels.Single (l => l.Color != LabelColor.Orange).Name,
-				Difficulty = c.Labels.Single (l => l.Color == LabelColor.Orange).Name.Split (' ').Last (),
+				Area = c.Labels.First (l => l.Color != LabelColor.Orange).Name,
+				Difficulty = c.Labels.First (l => l.Color == LabelColor.Orange).Name.Split (' ').Last (),
 				Title = c.Name,
 				Mentors = string.Join (", ", c.Members.Select (m => m.FullName)),
 				Description = c.Description
@@ -49,9 +49,13 @@ namespace MonoGSoCIdeasPage
 		{
 			IEnumerable<Idea> areaIdeas;
 			if (Ideas.TryGetValue (area, out areaIdeas)) {
+				bool isFirst = false;
 				foreach (var idea in areaIdeas) {
+					if (!isFirst) {
+						isFirst = true;
+						WriteLine ("");
+					}
 					WriteLine (idea.TransformText ());
-					WriteLine ("");
 				}
 			} else {
 				WriteLine ("**We don't have any ideas in this area right now, but feel free to propose your own!**");

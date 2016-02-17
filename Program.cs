@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using Manatee.Trello.ManateeJson;
 using Manatee.Trello;
 using Manatee.Trello.RestSharp;
@@ -34,7 +35,7 @@ namespace MonoGSoCIdeasPage
 				Difficulty = c.Labels.First (l => l.Color == LabelColor.Orange).Name.Split (' ').Last (),
 				Title = c.Name,
 				Mentors = string.Join (", ", c.Members.Select (m => m.FullName)),
-				Description = c.Description
+				Description = Regex.Replace (c.Description, "^- ", "* ", RegexOptions.Multiline)  // make sure unordered lists use asterisk (common style on website)
 			}).GroupBy (i => i.Area).ToDictionary (g => g.Key, g => (IEnumerable<Idea>)g);
 
 			Console.WriteLine (page.TransformText ());
@@ -49,15 +50,11 @@ namespace MonoGSoCIdeasPage
 		{
 			IEnumerable<Idea> areaIdeas;
 			if (Ideas.TryGetValue (area, out areaIdeas)) {
-				bool isFirst = false;
 				foreach (var idea in areaIdeas) {
-					if (!isFirst) {
-						isFirst = true;
-						WriteLine ("");
-					}
 					WriteLine (idea.TransformText ());
 				}
 			} else {
+				WriteLine ("");
 				WriteLine ("**We don't have any ideas in this area right now, but feel free to propose your own!**");
 			}
 		}

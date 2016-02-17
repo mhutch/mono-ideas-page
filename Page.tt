@@ -62,34 +62,29 @@ Microsoft .NET and Mono Integration
 
 Microsoft open sourced large chunks of code this year:
 
-- ReferenceSource: the source code for the class libraries of .NET as it ships on Windows
-- CoreFX: a fresh take on the distribution of the class libraries for a new, slimmer, smaller runtime
-- CoreCLR: their C/C++ based runtime, JIT, GC for running on Mac, Linux and Windows
-- Roslyn: Microsoft's C# and VB compiler as a service
-- CodeContracts: the tools needed to instrument your code
+* ReferenceSource: the source code for the class libraries of .NET as it ships on Windows
+* CoreFX: a fresh take on the distribution of the class libraries for a new, slimmer, smaller runtime
+* CoreCLR: their C/C++ based runtime, JIT, GC for running on Mac, Linux and Windows
+* Roslyn: Microsoft's C# and VB compiler as a service
+* CodeContracts: the tools needed to instrument your code
 
 We are tracking various ideas in the [.NET Integration in Mono](https://trello.com/b/vRPTMfdz/net-framework-integration-into-mono) trello board.
-
 <# WriteIdeas (MonoDotNetIntegration); #>
 
 Compilers and Tools
 ===================
-
 <# WriteIdeas (CompilersAndTools); #>
 
 MonoDevelop / Xamarin Studio IDE
 ================================
-
 <# WriteIdeas (MonoDevelop); #>
 
 Mono Runtime
 ============
-
 <# WriteIdeas (MonoRuntime); #>
 
 GTK# and Bindings
 ==================
-
 <# WriteIdeas (GtkSharpAndBindings); #>
 
 Contacting the Mono Team

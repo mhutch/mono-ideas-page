@@ -21,29 +21,17 @@ so you can submit your own ideas as well as apply for one from this list - but o
 
 You can use the following links to jump to sections that you're interested in:
 
+<# WriteToc (); #>
+
 **[Other Ideas](#other-ideas)**<br/>
 Suggest your own ideas for a project
-
-**[Microsoft .NET and Mono integration](#microsoft-net-and-mono-integration)**<br/>
-Work on blending the worlds of open source .NET and Mono projects together
-
-**[Compilers and Tools](#compilers-and-tools)**<br/>
-Work on Mono's tools and compilers
-
-**[MonoDevelop / Xamarin Studio IDE](#monodevelop--xamarin-studio-ide)**<br/>
-Help developers build applications by improving the cross-platform MonoDevelop / Xamarin Studio IDE
-
-**[Mono Runtime](#mono-runtime)**<br/>
-Improve the core Mono runtime and JIT
-
-**[GTK# and Bindings](#gtk-and-bindings)**<br/>
-GTK# Core, Bindings and Applications
 
 **[Contacting the Mono Team](#contacting-the-mono-team)**<br/>
 How to get in touch with us and ask questions
 
-Other Ideas
-===========
+<# WriteIdeas (); #>
+
+## Other Ideas
 
 If a project is not listed here, but you think you have a great idea, feel free to
 [contact the Mono team, mentors and org admins](#contacting-the-mono-team) to discuss or suggest your own project ideas.
@@ -53,47 +41,11 @@ that were passionate about those projects. In the end, most of these projects we
 
 Do not be afraid to pick up a project that would be interesting and also help the Mono universe.
 
-You can find some additional ideas on the [MonkeySquare ideas page](http://monkeysquare.org/gsoc/projects), and on the
-[Gnome ideas page](https://live.gnome.org/SummerOfCode2013/Ideas) (Mono-based projects in Gnome: Banshee, Blam, Tasque,
+You can find some additional ideas on the
+[Gnome ideas page](https://wiki.gnome.org/Outreach/SummerOfCode/2017/Ideas) (Mono-based projects in Gnome: Banshee, Blam, Tasque,
 Tomboy, GBrainy, Mistelix, F-Spot, ChronoJump, SparkleShare, LongoMatch).
 
-Microsoft .NET and Mono Integration
-===================================
-
-Microsoft open sourced large chunks of code this year:
-
-- ReferenceSource: the source code for the class libraries of .NET as it ships on Windows
-- CoreFX: a fresh take on the distribution of the class libraries for a new, slimmer, smaller runtime
-- CoreCLR: their C/C++ based runtime, JIT, GC for running on Mac, Linux and Windows
-- Roslyn: Microsoft's C# and VB compiler as a service
-- CodeContracts: the tools needed to instrument your code
-
-We are tracking various ideas in the [.NET Integration in Mono](https://trello.com/b/vRPTMfdz/net-framework-integration-into-mono) trello board.
-
-<# WriteIdeas (MonoDotNetIntegration); #>
-
-Compilers and Tools
-===================
-
-<# WriteIdeas (CompilersAndTools); #>
-
-MonoDevelop / Xamarin Studio IDE
-================================
-
-<# WriteIdeas (MonoDevelop); #>
-
-Mono Runtime
-============
-
-<# WriteIdeas (MonoRuntime); #>
-
-GTK# and Bindings
-==================
-
-<# WriteIdeas (GtkSharpAndBindings); #>
-
-Contacting the Mono Team
-========================
+## Contacting the Mono Team
 
 If you have questions or suggestions that you want to make in real-time and talk to a member of the team, please join us
 on IRC on the server "irc.gnome.org" in channel "#monosoc", "#monodev" or the "#mono" channel. Various mentors and
@@ -105,8 +57,7 @@ feedback about ideas and proposals. Community engagement is essential for a succ
 For any questions you may have about the program itself and to talk to the Mono GSoC admin, you can use
 [soc@xamarin.com](mailto:soc@xamarin.com).
 
-Mailing Lists
--------------
+### Mailing Lists
 
 [http://lists.ximian.com/mailman/listinfo/mono-devel-list](http://lists.ximian.com/mailman/listinfo/mono-devel-list)
 A mailing list dedicated to discussions about developing Mono itself, such as development of the runtime, class libraries, and related Mono projects.

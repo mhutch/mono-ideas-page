@@ -14,4 +14,22 @@ Global
 		{4776740A-91DC-41C3-8675-4A7A2F35AAD3}.Release|x86.ActiveCfg = Release|x86
 		{4776740A-91DC-41C3-8675-4A7A2F35AAD3}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = VisualStudio
+		$1.scope = text/x-csharp
+		$1.TabsToSpaces = False
+		$1.inheritsScope = text/plain
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabsToSpaces = False
+		$3.inheritsSet = VisualStudio
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+	EndGlobalSection
 EndGlobal

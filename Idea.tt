@@ -4,8 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 
-<#=Title#>
-<#=new string('-', Title.Length)#>
+### <#=Title#>
 
 **Complexity:** <#=Difficulty#>
 

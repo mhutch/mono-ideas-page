@@ -23,10 +23,12 @@ You can use the following links to jump to sections that you're interested in:
 
 <# WriteToc (); #>
 
-**[Other Ideas](#other-ideas)**<br/>
+**[Other Ideas](#other-ideas)**
+
 Suggest your own ideas for a project
 
-**[Contacting the Mono Team](#contacting-the-mono-team)**<br/>
+**[Contacting the Mono Team](#contacting-the-mono-team)**
+
 How to get in touch with us and ask questions
 
 <# WriteIdeas (); #>

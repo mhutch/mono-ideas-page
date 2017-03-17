@@ -84,7 +84,8 @@ We are tracking various ideas in the [.NET Integration in Mono](https://trello.c
 					continue;
 				}
 
-				WriteLine ($"**[{s.Title}](#{Linkify (s.Title)})**<br/>");
+				WriteLine ($"**[{s.Title}](#{Linkify (s.Title)})**");
+				WriteLine ("");
 				WriteLine (s.Description);
 				WriteLine ("");
 

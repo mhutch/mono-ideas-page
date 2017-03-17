@@ -60,11 +60,11 @@ namespace MonoGSoCIdeasPage
 				"Work on blending the worlds of open source .NET and Mono projects together",
 @"Microsoft open sourced large chunks of code the past couple of years:
 
-- ReferenceSource: the source code for the class libraries of .NET as it ships on Windows
-- CoreFX: a fresh take on the distribution of the class libraries for a new, slimmer, smaller runtime
-- CoreCLR: their C/C++ based runtime, JIT, GC for running on Mac, Linux and Windows
-- Roslyn: Microsoft's C# and VB compiler as a service
-- CodeContracts: the tools needed to instrument your code
+* ReferenceSource: the source code for the class libraries of .NET as it ships on Windows
+* CoreFX: a fresh take on the distribution of the class libraries for a new, slimmer, smaller runtime
+* CoreCLR: their C/C++ based runtime, JIT, GC for running on Mac, Linux and Windows
+* Roslyn: Microsoft's C# and VB compiler as a service
+* CodeContracts: the tools needed to instrument your code
 
 We are tracking various ideas in the [.NET Integration in Mono](https://trello.com/b/vRPTMfdz/net-framework-integration-into-mono) trello board."),
 			new Section (
@@ -78,22 +78,27 @@ We are tracking various ideas in the [.NET Integration in Mono](https://trello.c
 	{
 		void WriteToc ()
 		{
+			bool first = true;
 			foreach (var s in MainClass.Sections) {
 				List<Idea> areaIdeas;
 				if (!Ideas.TryGetValue (s.Key, out areaIdeas)) {
 					continue;
 				}
 
+				if (first) {
+					first = false;
+				} else {
+					WriteLine ("");
+				}
+
 				WriteLine ($"**[{s.Title}](#{Linkify (s.Title)})**");
 				WriteLine ("");
-				WriteLine (s.Description);
+				WriteLine (s.Description.TrimEnd());
 				WriteLine ("");
 
 				foreach (var idea in areaIdeas) {
 					WriteLine ($"* [{idea.Title}](#{Linkify (idea.Title)})");
 				}
-
-				WriteLine ("");
 			}
 		}
 
@@ -114,13 +119,19 @@ We are tracking various ideas in the [.NET Integration in Mono](https://trello.c
 
 		void WriteIdeas ()
 		{
+			bool firstSection = true;
 			foreach (var s in MainClass.Sections) {
 				List<Idea> areaIdeas;
 				if (!Ideas.TryGetValue (s.Key, out areaIdeas)) {
 					continue;
 				}
 
-				WriteLine ("");
+				if (firstSection) {
+					firstSection = false;
+				} else {
+					WriteLine ("");
+				}
+
 				WriteLine ($"## {s.Title}");
 				WriteLine ("");
 				if (s.SectionHeader != null) {
@@ -130,11 +141,12 @@ We are tracking various ideas in the [.NET Integration in Mono](https://trello.c
 
 				bool isFirst = true;
 				foreach (var idea in areaIdeas) {
-					if (!isFirst) {
+					if (isFirst) {
 						isFirst = false;
+					} else {
 						WriteLine ("");
 					}
-					WriteLine (idea.TransformText ());
+					WriteLine (idea.TransformText ().Trim());
 				}
 			}
 		}

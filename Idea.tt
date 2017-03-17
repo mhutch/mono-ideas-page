@@ -8,6 +8,6 @@
 
 **Complexity:** <#=Difficulty#>
 
-<#=Description#>
+<#=Description.Trim()#>
 
 **Mentors:** <#=Mentors#>

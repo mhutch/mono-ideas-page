@@ -68,9 +68,9 @@ namespace MonoGSoCIdeasPage
 
 We are tracking various ideas in the [.NET Integration in Mono](https://trello.com/b/vRPTMfdz/net-framework-integration-into-mono) trello board."),
 			new Section (
-				"Gtk# and Bindings",
-				"GTK# and Bindings",
-				"GTK# Core, Bindings and Applications"),
+				"Platforms and Bindings",
+				"Platforms and Bindings",
+				"Bindings to native toolkits and libraries, including GTK#, Xamarin.Android, Xamarin.iOS, Xamarin.Mac and UrhoSharp"),
 		};
 	}
 

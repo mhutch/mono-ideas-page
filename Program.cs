@@ -28,16 +28,12 @@ namespace MonoGSoCIdeasPage
 			var list = board.Lists.Single (l => l.Name == "Ready");
 			var readyCards = list.Cards;
 
-			var page = new Page ();
-
-			page.Ideas = readyCards.Select (c => new Idea {
-				Area = c.Labels.First (l => l.Color != LabelColor.Orange).Name,
-				Difficulty = c.Labels.First (l => l.Color == LabelColor.Orange).Name.Split (' ').Last (),
-				Title = c.Name,
-				Mentors = string.Join (", ", c.Members.Select (m => m.FullName)),
-				Description = c.Description
-			}).GroupBy (i => i.Area).ToDictionary (g => g.Key, g => ((IEnumerable<Idea>)g).ToList ());
-
+			var page = new Page {
+				Ideas = readyCards.Select (CardToIdea)
+					.GroupBy (i => i.Area)
+					.ToDictionary (g => g.Key, g => ((IEnumerable<Idea>)g).ToList ())
+			}
+;
 			Console.WriteLine (page.TransformText ());
 		}
 
@@ -72,6 +68,28 @@ We are tracking various ideas in the [.NET Integration in Mono](https://trello.c
 				"Platforms and Bindings",
 				"Bindings to native toolkits and libraries, including GTK#, Xamarin.Android, Xamarin.iOS, Xamarin.Mac and UrhoSharp"),
 		};
+
+		static Idea CardToIdea (Card c)
+		{
+			var difficultyLabel = c.Labels.FirstOrDefault (l => l.Color == LabelColor.Orange);
+			if (difficultyLabel == null) {
+				throw new Exception ($"Idea '{c.Name}' has no difficulty label");
+			}
+			var areaLabel = c.Labels.FirstOrDefault (l => l.Color != LabelColor.Orange);
+			if (areaLabel == null) {
+				throw new Exception ($"Idea '{c.Name}' has no area label");
+			}
+			if (!c.Members.Any ()) {
+				throw new Exception ($"Idea '{c.Name}' has no mentors");
+			}
+			return new Idea {
+				Area = areaLabel.Name,
+				Difficulty = difficultyLabel.Name.Split (' ').Last (),
+				Title = c.Name,
+				Mentors = string.Join (", ", c.Members.Select (m => m.FullName)),
+				Description = c.Description
+			};
+		}
 	}
 
 	partial class Page
@@ -93,7 +111,7 @@ We are tracking various ideas in the [.NET Integration in Mono](https://trello.c
 
 				WriteLine ($"**[{s.Title}](#{Linkify (s.Title)})**");
 				WriteLine ("");
-				WriteLine (s.Description.TrimEnd());
+				WriteLine (s.Description.TrimEnd ());
 				WriteLine ("");
 
 				foreach (var idea in areaIdeas) {
@@ -146,7 +164,7 @@ We are tracking various ideas in the [.NET Integration in Mono](https://trello.c
 					} else {
 						WriteLine ("");
 					}
-					WriteLine (idea.TransformText ().Trim());
+					WriteLine (idea.TransformText ().Trim ());
 				}
 			}
 		}

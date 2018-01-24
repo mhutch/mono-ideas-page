@@ -1,7 +1,7 @@
 ﻿using System;
 using Manatee.Trello.ManateeJson;
 using Manatee.Trello;
-using Manatee.Trello.RestSharp;
+using Manatee.Trello.WebApi;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
@@ -19,7 +19,7 @@ namespace MonoGSoCIdeasPage
 			TrelloConfiguration.Serializer = serializer;
 			TrelloConfiguration.Deserializer = serializer;
 			TrelloConfiguration.JsonFactory = new ManateeFactory ();
-			TrelloConfiguration.RestClientProvider = new RestSharpClientProvider ();
+			TrelloConfiguration.RestClientProvider = new WebApiClientProvider ();
 			TrelloAuthorization.Default.AppKey = Auth.AppKey;
 			TrelloAuthorization.Default.UserToken = Auth.UserToken;
 

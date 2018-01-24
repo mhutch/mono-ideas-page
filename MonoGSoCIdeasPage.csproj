@@ -1,77 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{4776740A-91DC-41C3-8675-4A7A2F35AAD3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MonoGSoCIdeasPage</RootNamespace>
-    <AssemblyName>MonoGSoCIdeasPage</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Externalconsole>true</Externalconsole>
-    <PlatformTarget>x86</PlatformTarget>
+    <TargetFramework>net461</TargetFramework>
+    <DefaultItemExcludes>$(DefaultItemExcludes);Auth.*.cs</DefaultItemExcludes>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="Manatee.Trello">
-      <HintPath>packages\Manatee.Trello.1.2.2\lib\net45\Manatee.Trello.dll</HintPath>
-    </Reference>
-    <Reference Include="Manatee.StateMachine">
-      <HintPath>packages\Manatee.StateMachine.1.1\lib\net45\Manatee.StateMachine.dll</HintPath>
-    </Reference>
-    <Reference Include="Manatee.Json">
-      <HintPath>packages\Manatee.Json.2.8.1\lib\net45\Manatee.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Manatee.Trello.ManateeJson">
-      <HintPath>packages\Manatee.Trello.ManateeJson.1.3.2.1\lib\net45\Manatee.Trello.ManateeJson.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp">
-      <HintPath>packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Manatee.Trello.RestSharp">
-      <HintPath>packages\Manatee.Trello.RestSharp.1.2.0.1\lib\net45\Manatee.Trello.RestSharp.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Page.cs">
-      <DependentUpon>Page.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Idea.cs">
-      <DependentUpon>Idea.tt</DependentUpon>
-    </Compile>
+    <PackageReference Include="Manatee.Trello.ManateeJson" Version="2.0.0" />
+    <PackageReference Include="Manatee.Trello.WebApi" Version="2.0.1" />
     <Compile Include="Auth.DONOTCOMMIT.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Page.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Page.cs</LastGenOutput>
-    </None>
-    <None Include="Idea.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>Idea.cs</LastGenOutput>
-    </None>
     <None Include="Auth.Example.cs" />
+    <TextTransform Include="**\*.tt" Generator="TextTemplatingFilePreprocessor" LastGenOutput="%(Filename).tt.cs" />
+    <Compile Update="**\*.tt.cs" DependentUpon="%(Filename)" />
   </ItemGroup>
 </Project>

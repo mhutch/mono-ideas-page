@@ -1,14 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>net47</TargetFramework>
     <DefaultItemExcludes>$(DefaultItemExcludes);Auth.*.cs</DefaultItemExcludes>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Manatee.Trello.ManateeJson" Version="2.0.0" />
     <PackageReference Include="Manatee.Trello.WebApi" Version="2.0.1" />
-    <Compile Include="Auth.DONOTCOMMIT.cs" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
     <None Include="Auth.Example.cs" />
-    <TextTransform Include="**\*.tt" Generator="TextTemplatingFilePreprocessor" LastGenOutput="%(Filename).tt.cs" />
-    <Compile Update="**\*.tt.cs" DependentUpon="%(Filename)" />
+    <Compile Include="Auth.DONOTCOMMIT.cs" />
+    <TextTransform Include="**\*.tt" />
+    <None Update="@(TextTransform)" Generator="TextTemplatingFilePreprocessor" LastGenOutput="%(Filename).cs" />
+    <Compile Update="@(TextTransform->'%(RelativeDir)%(Filename).cs')" DependentUpon="%(Filename).tt" DesignTime="True" AutoGen="True" />
   </ItemGroup>
 </Project>

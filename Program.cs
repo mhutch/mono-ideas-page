@@ -1,19 +1,20 @@
-﻿using System;
-using Manatee.Trello.ManateeJson;
-using Manatee.Trello;
-using Manatee.Trello.WebApi;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
+using Manatee.Trello.ManateeJson;
+using Manatee.Trello;
+using Manatee.Trello.WebApi;
 
 namespace MonoGSoCIdeasPage
 {
-	class MainClass
+	class Program
 	{
 		// 
 		// to get your user token
 		// 
-		public static void Main (string [] args)
+		public static void Main (string[] args)
 		{
 			var serializer = new ManateeSerializer ();
 			TrelloConfiguration.Serializer = serializer;
@@ -23,7 +24,6 @@ namespace MonoGSoCIdeasPage
 			TrelloAuthorization.Default.AppKey = Auth.AppKey;
 			TrelloAuthorization.Default.UserToken = Auth.UserToken;
 
-
 			var board = new Board ("tj9zKDV4");
 			var list = board.Lists.Single (l => l.Name == "Ready");
 			var readyCards = list.Cards;
@@ -31,13 +31,17 @@ namespace MonoGSoCIdeasPage
 			var page = new Page {
 				Ideas = readyCards.Select (CardToIdea)
 					.GroupBy (i => i.Area)
-					.ToDictionary (g => g.Key, g => ((IEnumerable<Idea>)g).ToList ())
-			}
-;
-			Console.WriteLine (page.TransformText ());
+					.ToDictionary (g => g.Key, g => ((IEnumerable<Idea>)g).OrderBy (i => i.Title).ToList ())
+			};
+
+			var text = page.TransformText ();
+			Console.WriteLine (text);
+
+			var file = Path.Combine (Path.GetDirectoryName (typeof (Program).Assembly.Location), "page.md");
+			File.WriteAllText (file, text);
 		}
 
-		internal static Section [] Sections = {
+		internal static Section[] Sections = {
 			new Section (
 				"MonoDevelop",
 				"MonoDevelop / Xamarin Studio IDE",
@@ -97,7 +101,7 @@ We are tracking various ideas in the [.NET Integration in Mono](https://trello.c
 		void WriteToc ()
 		{
 			bool first = true;
-			foreach (var s in MainClass.Sections) {
+			foreach (var s in Program.Sections) {
 				List<Idea> areaIdeas;
 				if (!Ideas.TryGetValue (s.Key, out areaIdeas)) {
 					continue;
@@ -138,7 +142,7 @@ We are tracking various ideas in the [.NET Integration in Mono](https://trello.c
 		void WriteIdeas ()
 		{
 			bool firstSection = true;
-			foreach (var s in MainClass.Sections) {
+			foreach (var s in Program.Sections) {
 				List<Idea> areaIdeas;
 				if (!Ideas.TryGetValue (s.Key, out areaIdeas)) {
 					continue;
